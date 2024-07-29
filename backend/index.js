@@ -6,7 +6,7 @@ const generateID = () => {
   const maxID =
     notes.length > 0 ? Math.max(...notes.map((n) => Number(n.id))) : 0;
 
-  return Number(maxID + 1);
+  return String(maxID + 1);
 };
 
 let notes = [
@@ -53,7 +53,7 @@ app.post("/api/notes", (request, response) => {
   };
 
   notes = notes.concat(note);
-  response.json(notes);
+  response.json(note);
 });
 
 const PORT = process.env.PORT || 3001;

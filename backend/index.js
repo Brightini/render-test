@@ -6,7 +6,7 @@ const generateID = () => {
   const maxID =
     notes.length > 0 ? Math.max(...notes.map((n) => Number(n.id))) : 0;
 
-  return String(maxID + 1);
+  return Number(maxID + 1);
 };
 
 let notes = [
@@ -47,9 +47,9 @@ app.post("/api/notes", (request, response) => {
     });
   }
   const note = {
+    id: generateID(),
     content: body.content,
     important: Boolean(body.important) || false,
-    id: generateID(),
   };
 
   notes = notes.concat(note);
